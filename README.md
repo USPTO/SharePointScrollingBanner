@@ -1,4 +1,6 @@
 
+The SharepointScrollingBanner is a way to have a carousel of pictures come up within a Sharepoint site.  These pictures are clickable and can have text below them.
+
 # Usage
 ### Step 1
 Copy sp_colour_slider folder to your "Site Assets" folder in SharePoint
