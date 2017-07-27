@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Colour Slider for SharePoint</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Replace link href with your SharePoint/SiteAssests/sp_colour_slider/css... url -->
+    <link href="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body
+{
+    padding-top: 20px;
+}
+#myCarousel .nav a small
+{
+    display: block;
+}
+#myCarousel .nav
+{
+    background: #eee;
+}
+.nav-justified > li > a
+{
+    border-radius: 0px;
+}
+.nav-pills>li[data-slide-to="0"].active a { background-color: #16a085; }
+.nav-pills>li[data-slide-to="1"].active a { background-color: #e67e22; }
+.nav-pills>li[data-slide-to="2"].active a { background-color: #2980b9; }
+.nav-pills>li[data-slide-to="3"].active a { background-color: #8e44ad; }
+    </style>
+	<!--Replace script src with your SharePoint/SiteAssests/sp_colour_slider/... url's -->
+    <script src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/js/jquery.min.js"></script>
+    <script src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+				<!--Replace img src with your SharePoint image url -->
+                <img src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/img/slide_1.png">
+                <div class="carousel-caption">
+                    <h3>Slide 1 (active) Callout Text</h3>
+                    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem
+                        ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+				<!--Replace img src with your SharePoint image url -->
+                <img src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/img/slide_2.png">
+                <div class="carousel-caption">
+                    <h3>Slide 2 Callout Text</h3>
+                    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem
+                        ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+				<!--Replace img src with your SharePoint image url -->
+                <img src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/img/slide_3.png">
+                <div class="carousel-caption">
+                    <h3>Slide 3 Callout Text</h3>
+                    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem
+                        ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+				<!--Replace img src with your SharePoint image url -->
+                <img src="https://www.yoursharepointsite.com/SiteAssets/sp_colour_slider/img/slide_4.png">
+                <div class="carousel-caption">
+                    <h3>Slide 4 Callout Text</h3>
+                    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem
+                        ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </div>
+            <!-- End Item -->
+        </div>
+        <!-- End Carousel Inner -->
+		<!--Replace individual li href with SharePoint url's of your choice and change slide navigation text-->
+        <ul class="nav nav-pills nav-justified">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#">Slide 1<small>Lorem
+                ipsum dolor sit</small></a></li>
+            <li data-target="#myCarousel" data-slide-to="1"><a href="#">Slide 2<small>Lorem ipsum
+                dolor sit</small></a></li>
+            <li data-target="#myCarousel" data-slide-to="2"><a href="#">Slide 3<small>Lorem ipsum
+                dolor sit</small></a></li>
+            <li data-target="#myCarousel" data-slide-to="3"><a href="#">Slide 4<small>Lorem ipsum
+                dolor sit</small></a></li>
+        </ul>
+    </div>
+    <!-- End Carousel -->
+</div>
+
+<script type="text/javascript">
+$(document).ready( function() {
+    $('#myCarousel').carousel({
+    	interval:   5000
+	});
+	
+	var clickEvent = false;
+	$('#myCarousel').on('click', '.nav a', function() {
+			clickEvent = true;
+			$('.nav li').removeClass('active');
+			$(this).parent().addClass('active');		
+	}).on('slid.bs.carousel', function(e) {
+		if(!clickEvent) {
+			var count = $('.nav').children().length -1;
+			var current = $('.nav li.active');
+			current.removeClass('active').next().addClass('active');
+			var id = parseInt(current.data('slide-to'));
+			if(count == id) {
+				$('.nav li').first().addClass('active');	
+			}
+		}
+		clickEvent = false;
+	});
+});
+</script>
+</body>
+</html>
