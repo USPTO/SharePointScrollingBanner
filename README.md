@@ -1,0 +1,2 @@
+# SharePointScrollingBanner
+SharePoint Scrolling Banner
